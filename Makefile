@@ -2,10 +2,12 @@
 all: nlcd2006 ak hi pr
 
 nlcd2006:
-	-wget -nc 'http://gisdata.usgs.gov/TDDS/DownloadFile.php?TYPE=nlcd2006&FNAME=NLCD2006_landcover_4-20-11_se5.zip' \
--O NLCD2006_landcover_4-20-11_se5.zip
-	mkdir NLCD2006_landcover_4-20-11_se5
-	7za e -o NLCD2006_landcover_4-20-11_se5 NLCD2006_landcover_4-20-11_se5.zip
+	-wget --no-clobber --no-verbose \
+	  'http://gisdata.usgs.gov/TDDS/DownloadFile.php?TYPE=nlcd2006&FNAME=NLCD2006_landcover_4-20-11_se5.zip' \
+	  --output-document=data/NLCD2006_landcover_4-20-11_se5.zip
+	-mkdir data/NLCD2006_landcover_4-20-11_se5
+#	7za e -o data/NLCD2006_landcover_4-20-11_se5 data/NLCD2006_landcover_4-20-11_se5.zip
+	unzip -o data/NLCD2006_landcover_4-20-11_se5.zip -d data/NLCD2006_landcover_4-20-11_se5
 
 nlcd2006change:
 	-wget -nc 'http://gisdata.usgs.gov/TDDS/DownloadFile.php?TYPE=nlcd2006&FNAME=NLCD2006_landcover_change_pixels_5-4-11_se5.zip' -O NLCD2006_landcover_change_pixels_5-4-11_se5.zip
